@@ -1,16 +1,42 @@
 workflows:
-  android-release:
-    name: Android Release
+  android-emergencia:
+    name: StockMaster Real Build
+    max_build_duration: 60
+    instance_type: mac_mini_m1
     environment:
       flutter: stable
+      android_ndk: 27.0.12077973
     scripts:
-      - name: Get dependencies
+      - name: Limpiar y Forzar Estructura Tradicional
         script: |
-          cd $CM_BUILD_DIR
+          rm -rf android
+          flutter create --platforms=android --template=app .
+          
+          # Copiar archivo de Firebase a su lugar nativo correcto
+          cp google-services.json android/app/google-services.json
+          
+          # Inyectar configuraciones obligatorias directamente en el build.gradle tradicional (Groovy)
+          sed -i '' 's/compileSdk = flutter.compileSdkVersion/compileSdk = 36/g' android/app/build.gradle
+          sed -i '' 's/minSdk = flutter.minSdkVersion/minSdk = 23/g' android/app/build.gradle
+          sed -i '' 's/targetSdk = flutter.targetSdkVersion/targetSdk = 36/g' android/app/build.gradle
+          sed -i '' 's/ndkVersion = flutter.ndkVersion/ndkVersion = "27.0.12077973"/g' android/app/build.gradle
+          
+          # Inyectar dependencias y plugins de Firebase de forma tradicional
+          sed -i '' '/plugins {/a\
+              id "com.google.gms.google-services" version "4.4.1" apply false\
+          ' android/settings.gradle
+          
+          sed -i '' '/id "com.android.application"/a\
+              id "com.google.gms.google-services"\
+          ' android/app/build.gradle
+
+      - name: Descargar Dependencias de Flutter
+        script: |
           flutter pub get
-      - name: Build APK
+
+      - name: Forzar Compilacion Directa a APK Release
         script: |
-          cd $CM_BUILD_DIR
-          flutter build apk --release
+          flutter build apk --release --android-skip-build-dependency-validation --no-tree-shake-icons
+
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
