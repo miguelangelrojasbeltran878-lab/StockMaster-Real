@@ -5,7 +5,6 @@ workflows:
     instance_type: mac_mini_m1
     environment:
       flutter: stable
-      android_ndk: 27.0.12077973
     scripts:
       - name: Limpiar y Forzar Estructura Tradicional
         script: |
