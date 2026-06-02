@@ -15,6 +15,7 @@ pluginManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://storage.googleapis.com/download.flutter.io") } // 🔴 Esto repara el enlace de FlutterActivity
         gradlePluginPortal()
     }
 }
