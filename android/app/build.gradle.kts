@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.stockmaster"
-        minSdk = flutter.minSdkVersion
+        minSdk = 23
         targetSdk = 36
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -36,4 +36,9 @@ android {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    // Esto obliga a Kotlin a entender qué es Flutter y soluciona el Unresolved reference
+    implementation("io.flutter:flutter_embedding_release:1.0.0-e672b0064510b5851da5b6625ae0eec6b01dc225") 
 }
