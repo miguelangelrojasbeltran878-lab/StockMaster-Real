@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "417435109092",
+    "project_id": "stockmaster-b3df1",
+    "storage_bucket": "stockmaster-b3df1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417435109092:android:742314d305c10499bf8ef1",
+        "android_client_info": {
+          "package_name": "com.co.stockmaster"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAusLwWr8PeLmLFK9_CeLDxliAagN_bS6Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417435109092:android:9daa8559e7e89f9ebf8ef1",
+        "android_client_info": {
+          "package_name": "com.example.stockmaster"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAusLwWr8PeLmLFK9_CeLDxliAagN_bS6Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
